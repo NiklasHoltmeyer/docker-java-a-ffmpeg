@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  speechtotext:
+    hostname: ${speechtotext_HOSTNAME}
+#    build: ${JAVA_IMAGE_PATH}
+    image: ${JAVA_IMAGE}
+    environment:
+      - "JAR_FILE=${speechtotext_JAR_FILE}"
+    ports:
+      - "${speechtotext_PORT}:4000"
+    volumes:
+      - "${speechtotext_TMP_FOLDER}:/tmp"
+      - "${speechtotext_JAR_FOLDER}:/jar"
+      - "${speechtotext_SRV_FOLDER}:/srv"
+    entrypoint:
+      - "sh"
+      - "-c"
+      - "java -Djava.security.egd=file:/dev/./urandom -jar /jar/${speechtotext_JAR_NAME}.jar" 
