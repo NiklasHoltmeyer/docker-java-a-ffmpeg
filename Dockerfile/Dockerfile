@@ -1,2 +1,2 @@
 FROM openjdk:8-jdk-alpine
-RUN apk add ffmpeg
+RUN apk add --update ffmpeg
